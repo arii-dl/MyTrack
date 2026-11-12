@@ -1,0 +1,19 @@
+{
+  "id": "./index.html",
+  "name": "MyTrack — Gestor Académico",
+  "short_name": "MyTrack",
+  "lang": "es-AR",
+  "description": "Toda tu carrera en un solo lugar: materias, parciales, temas y créditos. Funciona sin conexión.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f7f7f9",
+  "theme_color": "#4d7ea8",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "img/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

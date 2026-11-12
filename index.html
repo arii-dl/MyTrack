@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#4d7ea8">
+<meta name="description" content="MyTrack: toda tu carrera en un solo lugar. Materias, parciales, temas y créditos, también sin conexión.">
+<!-- PWA: el manifest describe cómo se ve la app instalada. -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="img/icon-192.png">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MyTrack">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>MyTrack — Gestor Académico</title>
+<link rel="stylesheet" href="css/styles.css">
+<!-- Tipografías: Lora (marca MyTrack) y Nunito Sans (UI, estilo Canva) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap">
+<!-- Librería para extraer texto de PDFs en el navegador -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="loading">Cargando aplicación…</div>
+  </div>
+
+  <!-- Barra PWA (instalar / sin conexión). Fuera de #app para sobrevivir a los render(). -->
+  <div id="pwa-barra" class="pwa-barra" role="status" hidden>
+    <span id="pwa-msg" class="pwa-msg"></span>
+    <button type="button" class="btn btn-sm btn-primary" id="pwa-instalar" hidden>Instalar app</button>
+    <button type="button" class="pwa-cerrar" id="pwa-cerrar" aria-label="Cerrar aviso">&times;</button>
+  </div>
+
+  <input type="file" id="pdf-input" accept="application/pdf" class="hidden" />
+
+  <!-- ===================== MODELO ===================== -->
+  <!-- Datos, migraciones, reglas de negocio y almacenamiento. Sin DOM. -->
+  <script src="js/model/constants.js"></script>
+  <script src="js/model/factories.js"></script>
+  <script src="js/model/migration.js"></script>
+  <script src="js/model/selectors.js"></script>
+  <script src="js/model/storage.js"></script>
+  <script src="js/model/seedData.js"></script>
+  <script src="js/model/pdfImport.js"></script>
+  <script src="js/model/camera.js"></script>
+
+  <!-- ===================== VISTA ===================== -->
+  <!-- Funciones puras: reciben estado, devuelven HTML. No mutan nada. -->
+  <script src="js/views/helpers.js"></script>
+  <script src="js/views/inicioView.js"></script>
+  <script src="js/views/mispanelesView.js"></script>
+  <script src="js/views/navbarView.js"></script>
+  <script src="js/views/temasChecklistView.js"></script>
+  <script src="js/views/parcialView.js"></script>
+  <script src="js/views/cardView.js"></script>
+  <script src="js/views/modalFormView.js"></script>
+  <script src="js/views/modalDetalleView.js"></script>
+  <script src="js/views/appView.js"></script>
+
+  <!-- ===================== CONTROLADOR ===================== -->
+  <!-- Estado de la app, eventos del DOM y orquestación Modelo <-> Vista. -->
+  <script src="js/controllers/core.js"></script>
+  <script src="js/controllers/inicioController.js"></script>
+  <script src="js/controllers/materiaController.js"></script>
+  <script src="js/controllers/temasController.js"></script>
+  <script src="js/controllers/camaraController.js"></script>
+  <script src="js/controllers/uiController.js"></script>
+  <script src="js/controllers/app.js"></script>
+
+  <!-- PWA: service worker, instalación y estado de conexión. -->
+  <script src="js/pwa.js"></script>
+</body>
+</html>
